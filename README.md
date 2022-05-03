@@ -74,5 +74,5 @@ You've seen how a basic RNN works. In this video, you learn about the gated recu
 
 ![image](https://user-images.githubusercontent.com/60442877/166390063-40eb7c15-7a27-4f57-9b5e-92473f9fe816.png)
 
-![image](https://user-images.githubusercontent.com/60442877/166390766-5bfa6428-fec2-4a9c-b7e5-8d6359243ad1.png)
+![image](https://user-images.githubusercontent.com/60442877/166390895-d711cca9-d77b-4f74-984a-538609e7dd29.png)
 
