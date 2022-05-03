@@ -88,7 +88,7 @@ The LSTM is an even slightly more powerful and more general version of the GRU. 
 - Gamma_f is called "Forget Gate"
 - Gamma_o is called "Output Gate"
 
-![image](https://user-images.githubusercontent.com/60442877/166401005-89ef5be8-f743-4fe7-a30a-1d5c73f7373b.png)
+![image](https://user-images.githubusercontent.com/60442877/166401763-38d771fc-7b9c-427e-acb9-3ef7820de466.png)
 
 ![image](https://user-images.githubusercontent.com/60442877/166401611-c908b92c-5e74-41ea-9b16-95ff29063b62.png)
 
