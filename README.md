@@ -87,6 +87,8 @@ You've seen how a basic RNN works. In this video, you learn about the gated recu
 
 ## Long Short Term Memory (LSTM) (capture very long-term dependency)
 
+LSTM, which is better at addressing vanishing gradients. The LSTM is better able to remember a piece of information and save it for many time steps.
+
 In the last video, you learn about the GRU, the Gated Recurring Unit and how that can allow you to learn very long range connections in a sequence. The other type of unit that allows you to do this very well is the LSTM or the long short term memory units. And this is even more powerful than the GRU, let's take a look.
 
 The LSTM is an even slightly more powerful and more general version of the GRU. And notice that for the LSTM, we will no longer have the case that a_t is equal to c_t.
