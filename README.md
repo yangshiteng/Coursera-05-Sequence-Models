@@ -150,6 +150,7 @@ Continuing with the named entity recognition example, if you're trying to detect
 
 ![image](https://user-images.githubusercontent.com/60442877/167545044-c217a647-e115-4c3e-b4fa-9bf86ce5f84f.png)
 
+![image](https://user-images.githubusercontent.com/60442877/167545856-6541ee5a-0cc1-4777-8532-fcaa22cdfb9e.png)
 
 
 
