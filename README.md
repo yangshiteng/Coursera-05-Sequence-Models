@@ -122,4 +122,35 @@ The different versions of RNNs you've seen so far will already work quite well b
 
 So this will be a Neural Network with three hidden layers. But then you might take the output here, let's get rid of this, and then just have a bunch of deep layers that are not connected horizontally but have a deep network here that then finally predicts y<1>. And you can have the same deep network here that predicts y<2>. So this is a type of network architecture that we're seeing a little bit more where you have three recurrent units that connected in time, followed by a network, followed by a network after that, as we seen for y<3> and y<4>, of course. There's a deep network, but that does not have the horizontal connections. So that's one type of architecture we seem to be seeing more of. And quite often, these blocks don't just have to be standard RNN, the simple RNN model. They can also be GRU blocks LSTM blocks. And finally, you can also build deep versions of the bidirectional RNN. Because deep RNNs are quite computationally expensive to train, there's often a large temporal extent already, though you just don't see as many deep recurrent layers. This has, I guess, three deep recurrent layers that are connected in time. You don't see as many deep recurrent layers as you would see in a number of layers in a deep conventional neural network.
 
+# Week 2 - Word Representation
+
+Hello, and welcome back. Last week, we learned about RNNs, GRUs, and LSTMs. In this week, you see how many of these ideas can be applied to NLP, to Natural Language Processing, which is one of the features of AI because it's really being revolutionized by deep learning. One of the key ideas you learn about is word embeddings, which is a way of representing words to let your algorithms automatically understand analogies like that, man is to woman, as king is to queen, and many other examples. And through these ideas of word embeddings, you'll be able to build NLP applications, even with models the size of, usually of relatively small label training sets. Finally towards the end of the week, you'll see how to debias word embeddings. That's to reduce undesirable gender or ethnicity or other types of bias that learning algorithms can sometimes pick up. 
+
+![image](https://user-images.githubusercontent.com/60442877/167533212-db6121f5-4526-4a5b-8ca9-d3636bd0a456.png)
+
+So far, we've been representing words using a vocabulary of words, and a vocabulary from the previous week might be say, 10,000 words. And we've been representing words using a one-hot vector. So for example, if man is word number 5391 in this dictionary, then you represent him with a vector with one in position 5391.
+
+One of the weaknesses of this representation is that it treats each word as a thing unto itself, and it doesn't allow an algorithm to easily generalize the cross words. For example, let's say you have a language model that has learned that when you see I want a glass of orange blank. Well, what do you think the next word will be? Very likely, it'll be juice. But even if the learning algorithm has learned that I want a glass of orange juice is a likely sentence, if it sees I want a glass of apple blank. As far as it knows the relationship between apple and orange is not any closer as the relationship between any of the other words man, woman, king, queen, and orange. And so, it's not easy for the learning algorithm to generalize from knowing that orange juice is a popular thing, to recognizing that apple juice might also be a popular thing or a popular phrase. And this is because the any product between any two different one-hot vector is zero. If you take any two vectors say, queen and king and any product of them, the end product is zero. If you take apple and orange and any product of them, the end product is zero. And you couldn't distance between any pair of these vectors is also the same. So it just doesn't know that somehow apple and orange are much more similar than king and orange or queen and orange.
+
+## Featurized Representation: word embedding
+
+![image](https://user-images.githubusercontent.com/60442877/167534327-51d9a3ac-9553-4be4-9310-1de77d139c4d.png)
+
+Now, if you use this representation to represent the words orange and apple, then notice that the representations for orange and apple are now quite similar. Some of the features will differ because of the color of an orange, the color an apple, the taste, or some of the features would differ. But by a large, a lot of the features of apple and orange are actually the same, or take on very similar values. And so, this increases the odds of the learning algorithm that has figured out that orange juice is a thing, to also quickly figure out that apple juice is a thing. So this allows it to generalize better across different words. So over the next few videos, we'll find a way to learn words embeddings. We just need you to learn high dimensional feature vectors like these, that gives a better representation than one-hot vectors for representing different words. And the features we'll end up learning, won't have a easy to interpret interpretation like that component one is gender, component two is royal, component three is age and so on. Exactly what they're representing will be a bit harder to figure out. But nonetheless, the featurized representations we will learn, will allow an algorithm to quickly figure out that apple and orange are more similar than say, king and orange or queen and orange.
+
+![image](https://user-images.githubusercontent.com/60442877/167534955-c5cae96b-86b9-48ff-b688-a6eccd38d7fc.png)
+
+Word embeddings has been one of the most important ideas in NLP, in Natural Language Processing. In this video, you saw why you might want to learn or use word embeddings. In the next video, let's take a deeper look at how you'll be able to use these algorithms, to build NLP algorithms.
+
+## Transfer Leanring and Word Embeddings
+
+In the last video, you saw what it might mean to learn a featurized representations of different words. In this video, you see how we can take these representations and plug them into NLP applications. 
+
+Continuing with the named entity recognition example, if you're trying to detect people's names. Given a sentence like Sally Johnson is an orange farmer, hopefully, you'll figure out that Sally Johnson is a person's name, hence, the outputs 1 like that. 
+
+![image](https://user-images.githubusercontent.com/60442877/167545044-c217a647-e115-4c3e-b4fa-9bf86ce5f84f.png)
+
+
+
+
 
