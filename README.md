@@ -194,3 +194,12 @@ Before moving on, I just want to clarify what this plot on the left is. Previous
 Now before moving on, let me just describe the similarity function that is most commonly used. So the most commonly used similarity function is called cosine similarity. So this is the equation we had from the previous slide. So in cosine similarity, you define the similarity between two vectors u and v as u transpose v divided by the lengths by the Euclidean lengths. So ignoring the denominator for now, this is basically the inner product between u and v. And so if u and v are very similar, their inner product will tend to be large. And this is called cosine similarity because this is actually the cosine of the angle between the two vectors, u and v. So that's the angle phi, so this formula is actually the cosine of the angle between them.
 
 So in this video, you saw how word embeddings can be used for analogy reasoning. And while you might not be trying to build an analogy reasoning system yourself as an application, this I hope conveys some intuition about the types of feature-like representations that these representations can learn. And you also saw how cosine similarity can be a way to measure the similarity between two different word embeddings. Now, we talked a lot about properties of these embeddings and how you can use them. Next, let's talk about how you'd actually learn these word embeddings, let's go on to the next video.
+
+
+## Embedding Matrix
+
+Let's start to formalize the problem of learning a good word embedding. When you implement an algorithm to learn a word embedding, what you end up learning is an embedding matrix.
+
+![image](https://user-images.githubusercontent.com/60442877/168410300-63c04fac-13f6-4c77-8f8f-2e195a326d79.png)
+
+Embedding matrix times the one-hot vector results in the single column of the selected word in Embedding matrix
