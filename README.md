@@ -173,3 +173,17 @@ One difference between the face recognition literature and what we do in word em
 Overall, by replacing the one-hot vectors we're using previously with the embedding vectors, you can allow your algorithms to generalize much better, or you can learn from much less label data. 
 
 ![image](https://user-images.githubusercontent.com/60442877/168404232-a3569c93-fabc-4126-b31d-39afe8778633.png)
+
+## Properties of Word Embeddings
+
+By now, you should have a sense of how word embeddings can help you build NLP applications. One of the most fascinating properties of word embeddings is that they can also help with analogy reasoning. And while reasonable analogies may not be by itself the most important NLP application, they might also help convey a sense of what these word embeddings are doing, what these word embeddings can do. 
+
+![image](https://user-images.githubusercontent.com/60442877/168404519-2b2f00d9-3791-44a9-a8ea-ba795c087a5f.png)
+
+Let me show you what I mean here are the featurized representations of a set of words that you might hope a word embedding could capture. Let's say I pose a question, man is to woman as king is to what? Many of you will say, man is to woman as king is to queen. But is it possible to have an algorithm figure this out automatically? Well, here's how you could do it, let's say that you're using this four dimensional vector to represent man. So this will be your E5391, although just for this video, let me call this e subscript man. And let's say that's the embedding vector for woman, so I'm going to call that e subscript woman, and similarly for king and queen. And for this example, I'm just going to assume you're using four dimensional embeddings, rather than anywhere from 50 to 1,000 dimensional, which would be more typical. One interesting property of these vectors is that if you take the vector, e man, and subtract the vector e woman, then, You end up with approximately -1, negative another 1 is -2, decimal 0- 0, 0- 0, close to 0- 0, so you get roughly -2 0 0 0. And similarly if you take e king minus e queen, then that's approximately the same thing. That's about -1- 0.97, it's about -2. This is about 1- 1, since kings and queens are both about equally royal. So that's 0, and then age difference, food difference, 0. And so what this is capturing is that the main difference between man and woman is the gender. And the main difference between king and queen, as represented by these vectors, is also the gender. Which is why the difference e man- e woman, and the difference e king- e queen, are about the same.
+
+
+So one way to carry out this analogy reasoning is, if the algorithm is asked, man is to woman as king is to what? What it can do is compute e man- e woman, and try to find a vector, try to find a word so that e man- e woman is close to e king- e of that new word. And it turns out that when queen is the word plugged in here, then the left hand side is close to the the right hand side.
+
+
+
