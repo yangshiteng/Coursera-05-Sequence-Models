@@ -265,6 +265,11 @@ So to summarize, you've seen how you can learn word vectors in a Softmax classie
 
 ## GloVE Word Vectors
 
+You learn about several algorithms for computing words embeddings. Another algorithm that has some momentum in the NLP community is the GloVe algorithm. This is not used as much as the Word2Vec or the skip-gram models, but it has some enthusiasts. Because I think, in part of its simplicity.
+
+![image](https://user-images.githubusercontent.com/60442877/168493547-891c58ce-d2b0-43be-9e2b-905c4a4c4607.png)
+
+![image](https://user-images.githubusercontent.com/60442877/168493684-af390ae5-7180-4835-9bdf-ebaaa7624c92.png)
 
 
 
