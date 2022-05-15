@@ -223,7 +223,7 @@ So, this is one of the earlier and pretty successful algorithms for learning wor
 
 To summarize, in this video you saw how the language modeling problem which causes the pose of machines learning problem where you input the context like the last four words and predicts some target words, how posing that problem allows you to learn input word embedding. In the next video, you'll see how using even simpler context and even simpler learning algorithms to map from context to target word, can also allow you to learn a good word embedding. Let's go on to the next video where we'll discuss the Word2Vec model.
 
-## Word2Vec
+## Word2Vec （Skip-gram model）
 
 In the last video, you saw how you can learn a neural language model in order to get good word embeddings. In this video, you see the Word2Vec algorithm which is simpler and computationally more efficient way to learn this types of embeddings
 
@@ -241,7 +241,7 @@ Now, it turns out there are a couple problems with using this algorithm. And the
 
 So there are a few solutions to this, one which you see in the literature is to use a hierarchical softmax classifier. And what that means is, instead of trying to categorize something into all 10,000 carries on one go. Imagine if you have one classifier, it tells you is the target word in the first 5,000 words in the vocabulary? Or is in the second 5,000 words in the vocabulary? And let's say this binary cost that it tells you this is in the first 5,000 words, think of second class to tell you that this in the first 2,500 words of vocab or in the second 2,500 words vocab and so on. Until eventually you get down to classify exactly what word it is, so that the leaf of this tree, and so having a tree of classifiers like this, means that each of the retriever nodes of the tree can be just a binding classifier. And so you don't need to sum over all 10,000 words or else it will capsize in order to make a single classification. In fact, the computational classifying tree like this scales like log of the vocab size rather than linear in vocab size. So this is called a hierarchical softmax classifier.
 
-## Negative Embeddings
+## Negative Embeddings (Skip-gram model, deal with the computational problem in softmax)
 
 In the last video, you saw how the Skip-Gram model allows you to construct a supervised learning task. So we map from context to target words and how that allows you to learn a useful word embedding. But the downside of that was the Softmax objective was slow to compute. In this video, you'll see a modified learning problem called negative sampling that allows you to do something similar to the Skip-Gram model you saw just now, but with a much more efficient learning algorithm.
  
@@ -262,3 +262,9 @@ And so to draw this as a neural network, if the input word is orange, which is w
 So this technique is called negative sampling because what you're doing is, you have a positive example, the orange and then juice. And then you will go and deliberately generate a bunch of negative examples, negative samplings, hence, the name negative sampling, with which to train four more of these binary classifiers. And on every iteration, you choose four different random negative words with which to train your algorithm on.
 
 So to summarize, you've seen how you can learn word vectors in a Softmax classier, but it's very computationally expensive. And in this video, you saw how by changing that to a bunch of binary classification problems, you can very efficiently learn words vectors. And if you run this algorithm, you will be able to learn pretty good word vectors. Now of course, as is the case in other areas of deep learning as well, there are open source implementations. And there are also pre-trained word vectors that others have trained and released online under permissive licenses. And so if you want to get going quickly on a NLP problem, it'd be reasonable to download someone else's word vectors and use that as a starting point. So that's it for the Skip-Gram model. In the next video, I want to share with you yet another version of a word embedding learning algorithm that is maybe even simpler than what you've seen so far. So in the next video, let's learn about the Glove algorithm.
+
+## GloVE Word Vectors
+
+
+
+
