@@ -271,5 +271,36 @@ You learn about several algorithms for computing words embeddings. Another algor
 
 ![image](https://user-images.githubusercontent.com/60442877/168493684-af390ae5-7180-4835-9bdf-ebaaa7624c92.png)
 
+## Applications Using Word Embeddings
 
+### Sentiment Classification
 
+Sentiment classification is the task of looking at a piece of text and telling if someone likes or dislikes the thing they're talking about. It is one of the most important building blocks in NLP and is used in many applications. One of the challenges of sentiment classification is you might not have a huge label training set for it. But with word embeddings, you're able to build good sentiment classifiers even with only modest-size label training sets. 
+
+![image](https://user-images.githubusercontent.com/60442877/168511705-aa90f4a6-29ee-42d2-b993-c21a0132d6a1.png)
+
+Let's see how you can do that. So here's an example of a sentiment classification problem. The input X is a piece of text and the output Y that you want to predict is what is the sentiment, such as the star rating of, let's say, a restaurant review. So if someone says, "The dessert is excellent" and they give it a four-star review, "Service was quite slow" two-star review, "Good for a quick meal but nothing special" three-star review. So if you can train a system to map from X or Y based on a label data set like this, then you could use it to monitor comments that people are saying about maybe a restaurant that you run.
+
+So one of the challenges of sentiment classification is you might not have a huge label data set. So for sentimental classification task, training sets with maybe anywhere from 10,000 to maybe 100,000 words would not be uncommon. Sometimes even smaller than 10,000 words and word embeddings that you can take can help you to much better understand especially when you have a small training set. 
+
+![image](https://user-images.githubusercontent.com/60442877/168512197-422e2db0-083f-45c9-af18-f18c058a98af.png)
+
+Here's a simple sentiment classification model. You can take a sentence like "dessert is excellent" and look up those words in your dictionary. We use a 10,000-word dictionary as usual. And let's build a classifier to map it to the output Y that this was four stars. So given these four words, as usual, we can take these four words and look up the one-hot vector. So there's 0 8 9 2 8 which is a one-hot vector multiplied by the embedding matrix E, which can learn from a much larger text corpus. It can learn in embedding from, say, a billion words or a hundred billion words, and use that to extract out the embedding vector for the word "the", and then do the same for "dessert", do the same for "is" and do the same for "excellent". And if this was trained on a very large data set, like a hundred billion words, then this allows you to take a lot of knowledge even from infrequent words and apply them to your problem, even words that weren't in your labeled training set. 
+
+Now here's one way to build a classifier, which is that you can take these vectors, let's say these are 300-dimensional vectors, and you could then just sum or average them. And I'm just going to put a bigger average operator here and you could use sum or average. And this gives you a 300-dimensional feature vector that you then pass to a soft-max classifier which then outputs Y-hat. And so the softmax can output what are the probabilities of the five possible outcomes from one-star up to five-star.
+
+So one of the problems with this algorithm is it ignores word order. In particular, this is a very negative review, "Completely lacking in good taste, good service, and good ambiance". But the word good appears a lot. This is a lot. Good, good, good. So if you use an algorithm like this that ignores word order and just sums or averages all of the embeddings for the different words, then you end up having a lot of the representation of good in your final feature vector and your classifier will probably think this is a good review even though this is actually very harsh. This is a one-star review. So here's a more sophisticated model which is that, instead of just summing all of your word embeddings, you can instead use a RNN for sentiment classification.
+
+![image](https://user-images.githubusercontent.com/60442877/168513678-d73e7c2d-f859-4651-9abe-c89601362405.png)
+
+So here's what you can do. You can take that review, "Completely lacking in good taste, good service, and good ambiance", and find for each of them, the one-hot vector. And so I'm going to just skip the one-hot vector representation but take the one-hot vectors, multiply it by the embedding matrix E as usual, then this gives you the embedding vectors and then you can feed these into an RNN. And the job of the RNN is to then compute the representation at the last time step that allows you to predict Y-hat. So this is an example of a many-to-one RNN architecture which we saw in the previous week. 
+
+And with an algorithm like this, it will be much better at taking word sequence into account and realize that "things are lacking in good taste" is a negative review and "not good" a negative review unlike the previous algorithm, which just sums everything together into a big-word vector mush and doesn't realize that "not good" has a very different meaning than the words "good" or "lacking in good taste" and so on. And so if you train this algorithm, you end up with a pretty decent sentiment classification algorithm and because your word embeddings can be trained from a much larger data set, this will do a better job generalizing to maybe even new words now that you'll see in your training set, such as if someone else says, "Completely absent of good taste, good service, and good ambiance" or something, then even if the word "absent" is not in your label training set, if it was in your 1 billion or 100 billion word corpus used to train the word embeddings, it might still get this right and generalize much better even to words that were in the training set used to train the word embeddings but not necessarily in the label training set that you had for specifically the sentiment classification problem. So that's it for sentiment classification, and I hope this gives you a sense of how once you've learned or downloaded from online a word embedding, this allows you to quite quickly build pretty effective NLP systems.
+
+### Debiasing Word Embeddings
+
+![image](https://user-images.githubusercontent.com/60442877/168515598-20ec8b81-29d0-4e26-82da-e68b9baa8e75.png)
+
+![image](https://user-images.githubusercontent.com/60442877/168518605-969bce41-63ce-4332-8d56-2609c4343e8d.png)
+
+So to summarize, I think that reducing or eliminating bias of our learning algorithms is a very important problem because these algorithms are being asked to help with or to make more and more important decisions in society. In this video I shared just one set of ideas for how to go about trying to address this problem, but this is still a very much an ongoing area of active research by many researchers. 
