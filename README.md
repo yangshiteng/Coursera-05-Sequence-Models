@@ -372,4 +372,21 @@ Let's just quickly illustrate one more step of beam search.
 
 Notice that if the beam width was said to be equal to one, say cause there's only one, then this essentially becomes the greedy search algorithm which we had discussed in the last video but by considering multiple possibilities say three or ten or some other number at the same time beam search will usually find a much better output sentence than greedy search.
 
+## Refinements to Beam Search
+
+In the last video, you saw the basic beam search algorithm, in this video, you learn some little changes, they'll make it work even better.
+
+### Length Normalization
+
+![image](https://user-images.githubusercontent.com/60442877/170891467-4bba2984-6645-4d5e-942e-ae088751f762.png)
+
+### How to choose the Beam width? 
+
+![image](https://user-images.githubusercontent.com/60442877/170891554-85462126-190e-4052-b351-1322bbd9c49e.png)
+
+Share the pros and cons of setting beam to be very large versus very small. If the beam width is very large, then you consider a lot of possibilities and so you tend to get a better result because you're consuming a lot of different options, but it will be slower. The memory requirements will also grow and also be computationally slower. Whereas if you use a very small beam width, then you get a worse result because you are just keeping less possibilities in mind as the algorithm is running, but you get a result faster and the memory requirements will also be lower. In the previous video, we use in our running example a beam width of 3, so we're keeping three possibilities in mind in practice that is on the small side in production systems, it's not uncommon to see a beam width maybe around 10. I think a beam width of 100 would be considered very large for a production system, depending on the application. But for systems where people want to squeeze out every last drop of performance in order to publish people the best possible result, it's not uncommon to see people use beam width of 1,000 or 3,000, but this is very application as well as a domain dependent. I would say try out a variety of values of beam as see what works for your application, but when beam is very large, there is often diminishing returns. For many applications, I would expect to see a huge gain as you go from beam of one, which is basically research to three to maybe 10, but the gains as you go from the thousands of thousand beam width might not be as big.
+
+
+
+
 
