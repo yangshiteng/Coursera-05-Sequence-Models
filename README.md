@@ -330,4 +330,46 @@ From the earlier course on ConvNet, you've seen how you can input an image into 
 
 You've now seen how a basic sequence to sequence model works. How basic image to sequence, or image captioning model works. But there are some differences between how you'll run a model like this, to generate the sequence compared to how you were synthesizing novel text using a language model. One of the key differences is you don't want to randomly choose in translation. You may be want the most likely translation or you don't want to randomly choose in caption, maybe not, but you might want the best caption and most likely caption. Let's see in the next video how you go about generating that.
 
+## Picking the Most Likely Sentence
+
+There are some similarities between the sequence to sequence machine translation model and the language models that you have worked within the first week of this course, but there are some significant differences as well.
+
+![image](https://user-images.githubusercontent.com/60442877/170883815-1ef30c84-cc8d-4fac-8a75-a89d1ba6bef0.png)
+
+Let's take a look. So, you can think of machine translation as building a conditional language model. Here's what I mean, in language modeling, this was the network we had built in the first week. And this model allows you to estimate the probability of a sentence. That's what a language model does. And you can also use this to generate novel sentences, and sometimes when you are writing x1 and x2 here, where in this example, x2 would be equal to y1 or equal to y and one is just a feedback. But x1, x2, and so on were not important. So just to clean this up for this slide, I'm going to just cross these off. X1 could be the vector of all zeros and x2, x3 are just the previous output you are generating. So that was the language model. The machine translation model looks as follows, and I am going to use a couple different colors, green and purple, to denote respectively the encoded network in green and the decoded network in purple. And you notice that the decoded network looks pretty much identical to the language model that we had up there. So what the machine translation model is, is very similar to the language model, except that instead of always starting along with the vector of all zeros, it instead has an encoded network that figures out some representation for the input sentence, and it takes that input sentence and starts off the decoded network with representation of the input sentence rather than with the representation of all zeros. So, that's why I call this a conditional language model, and instead of modeling the probability of any sentence, it is now modeling the probability of, say, the output English translation, conditions on some input French sentence. So in other words, you're trying to estimate the probability of an English translation. Like, what's the chance that the translation is "Jane is visiting Africa in September," but conditions on the input French censors like, "Jane visite I'Afrique en septembre." So, this is really the probability of an English sentence conditions on an input French sentence which is why it is a conditional language model. 
+
+![image](https://user-images.githubusercontent.com/60442877/170884183-e668dd3d-64cc-41f1-9e0a-2c5bbb22a871.png)
+
+So, when you're using this model for machine translation, you're not trying to sample at random from this distribution. Instead, what you would like is to find the English sentence, y, that maximizes that conditional probability. So in developing a machine translation system, one of the things you need to do is come up with an algorithm that can actually find the value of y that maximizes this term over here. The most common algorithm for doing this is called beam search, and it's something you'll see in the next video. 
+
+Why not use a greedy search?
+
+So, what is greedy search? Well, greedy search is an algorithm from computer science which says to generate the first word just pick whatever is the most likely first word according to your conditional language model. Going to your machine translation model and then after having picked the first word, you then pick whatever is the second word that seems most likely, then pick the third word that seems most likely. This algorithm is called greedy search.
+
+![image](https://user-images.githubusercontent.com/60442877/170886145-cc2d9265-f5dc-4779-a183-077ed753add7.png)
+
+So, to summarize, in this video, you saw how machine translation can be posed as a conditional language modeling problem. But one major difference between this and the earlier language modeling problems is rather than wanting to generate a sentence at random, you may want to try to find the most likely English sentence, most likely English translation. But the set of all English sentences of a certain length is too large to exhaustively enumerate. So, we have to resort to a search algorithm. So, with that, let's go onto the next video where you'll learn about beam search algorithm.
+
+## Beam Search
+
+In this video, you learn about the beam search algorithm. In the last video, you remember how for machine translation given an input French sentence, you don't want to output a random English translation, you want to output the best and the most likely English translation. The same is also true for speech recognition where given an input audio clip, you don't want to output a random text transcript of that audio, you want to output the best, maybe the most likely, text transcript. Beam search is the most widely used algorithm to do this.
+
+![image](https://user-images.githubusercontent.com/60442877/170889444-6ba93ae8-8bd3-4cf0-bb77-04cff2c109c1.png)
+
+Let's just try Beam Search using our running example of the French sentence, "Jane, visite l'Afrique en Septembre". Hopefully being translated into, "Jane, visits Africa in September". The first thing Beam search has to do is try to pick the first words of the English translation, that's going to output. So here I've listed, say, 10,000 words into vocabulary. And to simplify the problem a bit, I'm going to ignore capitalization. So I'm just listing all the words in lower case. So, in the first step of Beam Search, I use this network fragment with the coalition in green and decoalition in purple, to try to evaluate what is the probability of that first word. So, what's the probability of the first output y, given the input sentence x gives the French input. So, whereas greedy search will pick only the one most likely words and move on, Beam Search instead can consider multiple alternatives. So, the Beam Search algorithm has a parameter called B, which is called the beam width and for this example I'm going to set the beam width to be equal to the three. And what this means is Beam search will consider not just one possibility but consider three at the time. So in particular, let's say evaluating this probability over different choices the first words, it finds that the choices in, Jane and September are the most likely three possibilities for the first words in the English outputs.
+
+So, to be clear in order to perform this first step of Beam search, what you need to do is run the input French sentence through this encoder network and then this first step will then decode the network, this is a softmax output overall 10,000 possibilities. Then you would take those 10,000 possible outputs and keep in memory which were the top three.
+
+Let's go into the second step of Beam search. 
+
+![image](https://user-images.githubusercontent.com/60442877/170889752-cb0170ae-8c05-412e-8331-c6bde925fab1.png)
+
+So for this second step of beam search because we're continuing to use a beam width of three and because there are 10,000 words in the vocabulary you'd end up considering three times 10000 or thirty thousand possibilities because there are 10,000 here, 10,000 here, 10,000 here as the beam width times the number of words in the vocabulary and what you do is you evaluate all of these 30000 options according to the probability the first and second words and then pick the top three. Just want to notice that because of beam width is equal to three, every step you instantiate three copies of the network to evaluate these partial sentence fragments and the output. And it's because of beam width is equal to three that you have three copies of the network with different choices for the first words, but these three copies of the network can be very efficiently used to evaluate all 30,000 options for the second word. 
+
+Let's just quickly illustrate one more step of beam search. 
+
+![image](https://user-images.githubusercontent.com/60442877/170889971-1be112a9-c2e3-4dd4-8f24-b3fe69cf8e26.png)
+
+Notice that if the beam width was said to be equal to one, say cause there's only one, then this essentially becomes the greedy search algorithm which we had discussed in the last video but by considering multiple possibilities say three or ten or some other number at the same time beam search will usually find a much better output sentence than greedy search.
+
 
