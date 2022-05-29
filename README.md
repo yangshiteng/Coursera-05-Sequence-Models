@@ -304,3 +304,30 @@ And with an algorithm like this, it will be much better at taking word sequence 
 ![image](https://user-images.githubusercontent.com/60442877/168518605-969bce41-63ce-4332-8d56-2609c4343e8d.png)
 
 So to summarize, I think that reducing or eliminating bias of our learning algorithms is a very important problem because these algorithms are being asked to help with or to make more and more important decisions in society. In this video I shared just one set of ideas for how to go about trying to address this problem, but this is still a very much an ongoing area of active research by many researchers. 
+
+
+# Week 3 - Sequence to sequence model
+
+## Basic Models
+
+### Language translation
+
+In this week, you'll hear about sequence to sequence models, which are useful for everything from machine translation to speech recognition. Let's start with the basic models, and then later this week, you'll hear about beam surge, the attention model, and we will wrap up the discussion of models for audio data like speech.
+
+Let's say you want to input a French sentence like Jane visite I'Afrique Septembre, and you want to translate it to the English sentence, Jane is visiting Africa in September. As usual, let's use x1 through x, in this case 5 to represent the words and the input sequence, and we'll use y1 through y6 to represent the words in the output sequence. How can you train a neural network to input the sequence x and output the sequence y?
+
+![image](https://user-images.githubusercontent.com/60442877/170882730-6d6f9889-a1c4-4fc2-a1f2-5da6977b49db.png)
+
+One of the most remarkable recent results in deep learning is that this model works. Given enough pairs of French and English sentences, if you train a model to input a French sentence and output the corresponding English translation, this will actually work decently well. This model simply uses an encoding network whose job is to find an encoding of the input French sentence, and then use a decoding network to generate the corresponding English translation.
+
+### Image Captioning
+
+![image](https://user-images.githubusercontent.com/60442877/170883462-2530c707-2c73-45c3-a771-ad7796b6f7e8.png)
+
+An architecture very similar to this also works for image captioning. Given an image like the one shown here, maybe you wanted to be captions automatically as a cat sitting on a chair. How do you train in your network to input an image and output a caption like that face up there? Here's what you can do.
+
+From the earlier course on ConvNet, you've seen how you can input an image into a convolutional network, maybe a pre-trained AlexNet, and have that learn and encoding a learner set the features of the input image. So, This is actually the AlexNet architecture, and if we get rid of this final softmax unit, the pre-trained AlexNet can give you a 4,096-dimensional feature vector of which to represent this picture of a cat. This pre-trained network can be the encoded network for the image and you now have a 4,096-dimensional vector that represents the image. You can then take this and feed it to an RNN whose job it is to generate the caption one word at a time. Similar to what we saw with machine translation, translating from French the English, you can now input a feature vector describing the inputs and then have it generate an output set of words, one word at a time. This actually works pretty well for image captioning, especially if the caption you want to generate is not too long.
+
+You've now seen how a basic sequence to sequence model works. How basic image to sequence, or image captioning model works. But there are some differences between how you'll run a model like this, to generate the sequence compared to how you were synthesizing novel text using a language model. One of the key differences is you don't want to randomly choose in translation. You may be want the most likely translation or you don't want to randomly choose in caption, maybe not, but you might want the best caption and most likely caption. Let's see in the next video how you go about generating that.
+
+
