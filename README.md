@@ -439,5 +439,15 @@ For the second step of this RNN, we're going to have a new hidden state S two an
 
 ## Detail of Attention Model
 
+In the last video, you saw how the attention model allows a neural network to pay attention to only part of an input sentence while it's generating a translation, much like a human translator might. Let's now formalize that intuition into the exact details of how you would implement an attention model. 
+
+So same as in the previous video, let's assume you have an input sentence and you use a bidirectional RNN, or bidirectional GRU, or bidirectional LSTM to compute features on every word. In practice, GRUs and LSTMs are often used for this, with maybe LSTMs be more common. And so for the forward occurrence, you have a forward occurrence first time step. Activation backward occurrence, first time step. Activation forward occurrence, second time step. Activation backward and so on. For all of them in just a forward fifth time step a backwards fifth time step.
+
+![image](https://user-images.githubusercontent.com/60442877/171036218-dc1dd7b2-5369-4187-9e98-be99847ae916.png)
+
+
+
+
+
 
 
