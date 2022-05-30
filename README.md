@@ -390,5 +390,13 @@ Share the pros and cons of setting beam to be very large versus very small. If t
 
 In the third course of this sequence of five courses, you saw how error analysis can help you focus your time on doing the most useful work for your project. Now, beam search is an approximate search algorithm, also called a heuristic search algorithm. And so it doesn't always output the most likely sentence. It's only keeping track of B equals 3 or 10 or 100 top possibilities. So what if beam search makes a mistake? In this video, you'll learn how error analysis interacts with beam search and how you can figure out whether it is the beam search algorithm that's causing problems and worth spending time on. Or whether it might be your RNN model that is causing problems and worth spending time on.
 
+![image](https://user-images.githubusercontent.com/60442877/170899730-794ed211-8d79-4e9d-a0ea-9d383d3766a0.png)
+
+![image](https://user-images.githubusercontent.com/60442877/170900205-e99e98cc-d086-4e77-ba7e-dea4b4af46db.png)
+
+![image](https://user-images.githubusercontent.com/60442877/170900581-e44c9911-e3d5-43fd-bb73-659b32383492.png)
+
+
+
 
 
