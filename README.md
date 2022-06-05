@@ -468,6 +468,20 @@ One other method that seems to work well is to use the CTC cost for speech recog
 ![image](https://user-images.githubusercontent.com/60442877/171325383-7ade08cd-3b45-4deb-b174-823c6cf7415d.png)
 
 
+## Trigger Word Detection
+
+You've now learned so much about deep learning and sequence models that we can actually describe a trigger word system quite simply just on one slide, as you see in this video. But with the rise of speech recognition, that there have been more and more devices you can wake up with your voice and those are sometimes called trigger word detection systems
+
+![image](https://user-images.githubusercontent.com/60442877/172034711-b096270e-1e93-41c9-a90f-8c24e1d54134.png)
+
+![image](https://user-images.githubusercontent.com/60442877/172034829-bb7edbd2-39fe-458b-9c53-a3b80331b640.png)
+
+
+
+
+
+
+
 
 
 
