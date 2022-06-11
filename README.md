@@ -451,6 +451,7 @@ So same as in the previous video, let's assume you have an input sentence and yo
 
 ![image](https://user-images.githubusercontent.com/60442877/173203342-b86ed16a-8583-4a44-b488-096e7ea6ead7.png)
 
+![image](https://user-images.githubusercontent.com/60442877/173207200-3290681d-1f66-4c83-9a5b-730267ab1109.png)
 
 Now, one downside to this algorithm is that it does take quadratic time or quadratic cost to run this algorithm. If you have tx words in the input and ty words in the output then the total number of these attention parameters are going to be tx times ty. And so this algorithm runs in quadratic cost. Although in machine translation applications where neither input nor output sentences is usually that long maybe quadratic cost is actually acceptable. 
 
