@@ -380,6 +380,8 @@ In the last video, you saw the basic beam search algorithm, in this video, you l
 
 ![image](https://user-images.githubusercontent.com/60442877/170891467-4bba2984-6645-4d5e-942e-ae088751f762.png)
 
+There's one other change the algorithm that makes it work better, which is instead of using this as the objective you're trying to maximize. One thing you could do is normalizes by the number of words in your translation and so this takes the average of the log of the probability of each word and does significantly reduces the penalty for putting longer translations. In practice as a heuristic instead of dividing by ty the number of words in the output sentence, sometimes you use the softer approach we have ty to power of Alpha where maybe Alpha is equal to 0.7. If Alpha was equal to one, then the completely normalized by length, if Alpha was equal to 0, then well, ty to the 0 will be 1, then you're just not normalizing at all and this is somewhere in between full normalization and no normalization
+
 ### How to choose the Beam width? 
 
 ![image](https://user-images.githubusercontent.com/60442877/170891554-85462126-190e-4052-b351-1322bbd9c49e.png)
