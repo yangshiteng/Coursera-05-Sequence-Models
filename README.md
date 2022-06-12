@@ -488,6 +488,9 @@ The literature on trigger detection algorithm is still evolving so there isn't w
 
 ![image](https://user-images.githubusercontent.com/60442877/172034829-bb7edbd2-39fe-458b-9c53-a3b80331b640.png)
 
+![image](https://user-images.githubusercontent.com/60442877/173213145-fd7f4104-18c7-4ece-a809-ce823cb47bb2.png)
+
+![image](https://user-images.githubusercontent.com/60442877/173213250-7db08c0e-c90a-4887-9182-077de5d95fd9.png)
 
 
 
