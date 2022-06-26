@@ -532,3 +532,13 @@ Another way to write A^3 is really as A, this A up here of q^3, k, v. But someti
 If you put all of these five computations together, denotation used in literature looks like this, where you can summarize all of these computations that we just talked about for all the words in the sequence by writing Attention(Q, K, V) where Q, K, V matrices with all of these values, and this is just a compressed or vectorized representation of this equation up here. The term in the denominator is just to scale the dot-product, so it doesn't explode. another name for this type of attention is the scaled dot-product attention. This is the one represented in the original transformer architecture paper.
 
 To recap, associated with each of the five words you end up with a query, a key, and a value. The query lets you ask a question about that word, such as what's happening in Africa. The key looks at all of the other words, and by the similarity to the query, helps you figure out which words gives the most relevant answer to that question. This is a much more nuanced, much richer representation for the world than if you just had to pull up the same fixed word embedding for every single word without being able to adapt it based on what words are to the left and to the right of that word. 
+
+
+## Multi-Head Attention
+
+Let's jump in and learn about the multi head attention mechanism. The notation gets a little bit complicated, but the thing to keep in mind is basically just a big for loop over the self attention mechanism that you learned about in the last video.
+
+Each time you calculate self attention for a sequence is called a head. And thus the name multi head attention refers to if you do what you saw in the last video, but a bunch of times let's walk through how this works.
+
+
+
