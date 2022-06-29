@@ -521,6 +521,9 @@ To use attention model with a style more like CNNs, you need to calculate self-a
 
 ![image](https://user-images.githubusercontent.com/60442877/176503772-3624881c-ca32-47ed-bb36-2f2552666664.png)
 
+![image](https://user-images.githubusercontent.com/60442877/176524648-f32b41d5-c2f4-496b-b1e4-49c7dd81b6a5.png)
+
+
 When we're building attention on top of RNNs, this was the equation we used. With the self-attention mechanism, the attention equation is instead going to look like this. You can see the equations have some similarity. But the main difference is that for every word, say for l'Afrique, you have three values called the query, key, and value. These vectors are the key inputs to computing the attention value for each words. Now, let's step through the steps needed to actually calculate A3. 
 
 ![image](https://user-images.githubusercontent.com/60442877/175830595-63e895e6-7707-4a41-a80f-d2bfba4d16f1.png)
@@ -585,4 +588,13 @@ In case you read the literature on the transformer network, you may also hear so
 ![image](https://user-images.githubusercontent.com/60442877/175854889-16a108e1-d029-4785-9a5d-3fd424a6d93b.png)
 
 ![image](https://user-images.githubusercontent.com/60442877/176506289-e25d40c8-d963-4cc9-a689-4a07667be8d4.png)
+
+![image](https://user-images.githubusercontent.com/60442877/176520546-d8ea6d60-f3a0-4e08-8be4-d2608429a24c.png)
+
+![image](https://user-images.githubusercontent.com/60442877/176520562-41b9664a-5619-42a4-b8ac-5e96e5c66bc2.png)
+
+
+
+
+
 
